@@ -35,15 +35,16 @@ All code in this repository is licensed under the terms of the `MIT License`. Fo
 
 #### Blog notes https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
-The other day, I wanted to quickly launch an nginx server with Let’s Encrypt certificates. I expected the task to be easy and straightforward. Turns out: I was wrong, it took a significant amount of time and it’s quite a bit more complicated.
-Of course, in the grand scheme of things, it is pretty straightforward. But there are a couple of details you need to be aware of. The goal of this guide is to help you build a docker-compose setup that runs nginx in one container and a service for obtaining and renewing HTTPS certificates in another. Whether you’re using nginx as a proxy for your web app or just for serving static files, this guide is for you.
+
+* The other day, I wanted to quickly launch an nginx server with Let’s Encrypt certificates. I expected the task to be easy and straightforward. Turns out: I was wrong, it took a significant amount of time and it’s quite a bit more complicated.
+* Of course, in the grand scheme of things, it is pretty straightforward. But there are a couple of details you need to be aware of. The goal of this guide is to help you build a docker-compose setup that runs nginx in one container and a service for obtaining and renewing HTTPS certificates in another. Whether you’re using nginx as a proxy for your web app or just for serving static files, this guide is for you.
 TL;DR: The full code from this guide is available on GitHub.
-Quick Reminder: What is docker-compose?
+* Quick Reminder: What is docker-compose?
 docker-compose is a tool for defining containers and running them. It’s a great choice when you have multiple interdependent containers but you don’t need a full-blown container cluster like Kubernetes.
-The official documentation puts it like this:
+* The official documentation puts it like this:
 With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration
 This guide requires docker-compose. If you don’t have it yet, take a look at the installation instructions and get it.
-Hint: If you’re installing docker-compose on CoreOS, it needs to go into /opt/bin instead of /usr/local/bin.
+* Hint: If you’re installing docker-compose on CoreOS, it needs to go into /opt/bin instead of /usr/local/bin.
 The Setup
 Official images of nginx and an automated build of certbot, the EFF’s tool for obtaining Let’s Encrypt certificates, are available in the Docker library.
 Let’s begin with a basic docker-compose.yml configuration file that defines containers for both images:
